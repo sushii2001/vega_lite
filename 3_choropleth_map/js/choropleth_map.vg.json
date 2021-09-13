@@ -22,17 +22,18 @@
     },
     {"calculate": "datum.Active + 0.1", "as": "Active Cases"}
   ],
-  "projection": {
-    "type": "equirectangular"
-  },
-  "mark": {
-    "type": "geoshape"
-    },
+  "projection": {"type": "equirectangular"},
+  "mark": {"type": "geoshape"},
+  
   "encoding": {
     "color": {
       "field": "Active Cases",
       "type": "quantitative",
-      "scale": {"type": "log"}
+      "scale": {
+        "type": "threshold", 
+        "domain": [10000, 100000, 500000], 
+        "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+      }
     },
     "tooltip": [
       {"field": "properties.NAME", "type": "nominal", "title": "Country"},
